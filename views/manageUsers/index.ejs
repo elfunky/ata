@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Create User</title>
+    <%include ../partials/header.ejs%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+</head>
+
+<body>
+    <table class="table table-bordered table-striped text-center text-nowrap">
+        <thead class="bg-info text-white">
+            <th>#</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Name</th>
+            <th>Contact Number</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <%for(let i=0; i<users.length; i++){%>
+            <tr>
+                <td><%- i+1 %></td>
+                <td><%- users[i].email%></td>
+                <td><%- users[i].pass%></td>
+                <td><%- users[i].name%></td>
+                <td><%- users[i].number%></td>
+                <td>
+                    <a class="btn btn-warning text-white" href="/manageUsers/edit/<%-users[i]._id%>"><i class="fa fa-edit"></i></a>
+                    <a class="btn btn-danger text-white" href="/manageUsers/delete/<%-users[i]._id%>"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+            <%}%>
+        </tbody>
+    </table>
+    <%include ../partials/footerScripts.ejs%>
+</body>
+
+</html>
